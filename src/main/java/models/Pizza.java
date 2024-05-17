@@ -10,7 +10,7 @@ public class Pizza {
 	
 	private Double price;
 	
-	private Integer idOrdineInteger;
+	private Integer idOrdine;
 	
 
 	public Pizza() {
@@ -55,11 +55,11 @@ public class Pizza {
 		this.price = price;
 	}
 
-	public Integer getIdOrdineInteger() {
-		return idOrdineInteger;
+	public Integer getIdOrdine() {
+		return idOrdine;
 	}
 
-	public void setIdOrdineInteger(Integer idOrdineInteger) {
-		this.idOrdineInteger = idOrdineInteger;
+	public void setIdOrdine(Integer idOrdine) {
+		this.idOrdine = idOrdine;
 	}
 }

@@ -1,5 +1,6 @@
 package dao;
 
+import java.io.ObjectInputStream.GetField;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -119,8 +120,8 @@ public class OrdineDAO {
         try {
 
         	String query ="INSERT INTO ordine " +
-                    "(id, is_open)" +
-                    "VALUES(?, ?, ?, ?);";
+                    "(is_open)" +
+                    "VALUES(?);";
 
             
             conn = connManager.getConnection();
@@ -128,9 +129,7 @@ public class OrdineDAO {
         
             PreparedStatement preparedStatement = conn.prepareStatement(query);
             
-            preparedStatement.setInt(1, o.getId());
             preparedStatement.setString(2, o.getIsOpen());
-            
             
             preparedStatement.executeUpdate();
             
@@ -143,6 +142,7 @@ public class OrdineDAO {
         }
         
 	}
+	
 	
 //			String queryPizze = "SELECT * FROM pizze WHERE id_ordine = ?";
 //			List<Ordine> ordini = popolata dal metodo getAllOrdini;
