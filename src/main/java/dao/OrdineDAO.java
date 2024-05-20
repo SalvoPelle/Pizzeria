@@ -1,6 +1,5 @@
 package dao;
 
-import java.io.ObjectInputStream.GetField;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -51,6 +50,7 @@ public class OrdineDAO {
 					p.setName(rs.getString("p.name"));
 					p.setIngredient(rs.getString("p.ingredient"));
 					p.setPrice(rs.getDouble("p.price"));
+					p.setIdOrdine(rs.getInt("p.id_ordine"));
 					menuOrdine.add(p);
 				o.setOrdineTavolo(menuOrdine);
 				menu.add(o);
