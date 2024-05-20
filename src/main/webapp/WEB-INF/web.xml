@@ -3,18 +3,18 @@
   <display-name>NewPizzeria</display-name>
   <welcome-file-list>
 <!--    <welcome-file>home.jsp</welcome-file> -->
-    <welcome-file>HomeServlet</welcome-file>
+    <welcome-file>HomeServ</welcome-file>
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name>OrdineServlet</display-name>
-    <servlet-name>OrdineServlet</servlet-name>
-    <servlet-class>servlet.OrdineServlet</servlet-class>
+    <display-name>OrdineServ</display-name>
+    <servlet-name>OrdineServ</servlet-name>
+    <servlet-class>servlet.OrdineServ</servlet-class>
   </servlet>
   <servlet>
     <description></description>
-    <display-name>ContoServlet</display-name>
-    <servlet-name>contoServlet</servlet-name>
-    <servlet-class>servlet.ContoServlet</servlet-class>
+    <display-name>ContoServ</display-name>
+    <servlet-name>contoServ</servlet-name>
+    <servlet-class>servlet.ContoServ</servlet-class>
   </servlet>
 </web-app>

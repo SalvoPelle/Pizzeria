@@ -29,7 +29,7 @@ public class Ordine {
 		this.isOpen = isOpen;
 	}
 
-	public List<Pizza> getOrdine() {
+	public List<Pizza> getOrdineTavolo() {
 		return ordineTavolo;
 	}
 

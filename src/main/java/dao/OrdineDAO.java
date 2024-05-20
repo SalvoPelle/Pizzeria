@@ -22,6 +22,49 @@ public class OrdineDAO {
         ResultSet rs = null;
        
         List<Ordine> menu = new ArrayList<>();
+		
+        try {
+        	
+            String query = "SELECT * FROM ordine";
+            
+            conn = connManager.getConnection();
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(query);
+
+            if (stmt.execute(query)) {
+                rs = stmt.getResultSet();
+            }
+            
+            while (rs.next()) {
+				Ordine o = new Ordine();
+				
+				
+				
+				o.setId(rs.getInt("o.id"));
+				o.setIsOpen(rs.getString("o.is_open"));
+				menu.add(o);
+				
+			}
+        
+        } catch (SQLException ex){
+                System.out.println("SQLException: " + ex.getMessage());
+                System.out.println("SQLState: " + ex.getSQLState());
+                System.out.println("VendorError: " + ex.getErrorCode());
+        }finally {
+        	connManager.closeConnection(conn);
+        }
+            
+		return menu;
+	}
+
+	
+	public List<Ordine> getAllOrdineComplete() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
+		ConnManager connManager = new ConnManager();
+		Connection conn = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+       
+        List<Ordine> menu = new ArrayList<>();
         List<Pizza> menuOrdine = new ArrayList<>();
 		
         try {
@@ -111,7 +154,7 @@ public class OrdineDAO {
 		return ord;
 	}
 
-	public void createOrdine(Ordine o) throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+	public Long createOrdine() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
 		// storico ordini con id ordine, n pizze per tipologia + totale. chiuso l'ordine si passa al nuovo
 		ConnManager connManager = new ConnManager();
 		Connection conn = null;
@@ -129,9 +172,19 @@ public class OrdineDAO {
         
             PreparedStatement preparedStatement = conn.prepareStatement(query);
             
-            preparedStatement.setString(2, o.getIsOpen());
+            preparedStatement.setString(1, "y");
             
-            preparedStatement.executeUpdate();
+            int affectedRows = preparedStatement.executeUpdate();
+            
+            if (affectedRows > 0) {
+                try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                       return generatedKeys.getLong(1);
+                       
+                        
+                    }
+                }
+            }
             
         } catch (SQLException ex){
                 System.out.println("SQLException: " + ex.getMessage());
@@ -140,6 +193,8 @@ public class OrdineDAO {
         }finally {
         	connManager.closeConnection(conn);
         }
+        
+        return 0l;
         
 	}
 	

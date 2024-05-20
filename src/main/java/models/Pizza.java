@@ -16,13 +16,6 @@ public class Pizza {
 	public Pizza() {
 	}
 
-	public Pizza(Integer id, String name, String ingredient, Double price) {
-		this.id = id;
-		this.name = name;
-		this.ingredient = ingredient;
-		this.price = price;
-	}
-
 	public Integer getId() {
 		return id;
 	}

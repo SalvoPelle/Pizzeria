@@ -2,8 +2,6 @@ package servlets;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,34 +9,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.PizzaDAO;
-import models.Pizza;
+import dao.OrdineDAO;
+import models.Ordine;
 
-
-@WebServlet("/HomeServlet")
-public class HomeServlet extends HttpServlet {
+@WebServlet("/HomeServ")
+public class HomeServ extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
-    public HomeServlet() {
+    public HomeServ() {
         super();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-//    	PizzaDAO pDao = new PizzaDAO();
+//    	OrdineDAO ordDao = new OrdineDAO();
+//    	Ordine ord = new Ordine();
 //		
-//		List<Pizza> menu = new ArrayList<Pizza>();
-//		try {
-//			List<Pizza> cicleMenu = pDao.getAllPizze();
 //		
-//			for(Pizza p : cicleMenu){
-//				menu.add(p);
-//			}
-//		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-    	
+//		
+//		int idOrdine = ord.getId();
+//		request.setAttribute("idOrdine", idOrdine);
     	request.getRequestDispatcher("home.jsp").forward(request, response);	
     }
 
